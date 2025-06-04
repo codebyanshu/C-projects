@@ -1,71 +1,58 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
 #include <string.h>
 #include <windows.h>
+// Function prototypes
+void menu();
+void welcomePage();\
 
-void welcomepage();
-void printBorder(int width);
-void printSpaces(int count);
-void margin(int x , int width );
-
-int main() {
-    welcomepage();
+int main()
+{
+    welcomePage();
+    getch(); 
+    system("cls");
+    menu();
     return 0;
 }
 
-void welcomepage() {
-    // Get console width instead of screen width
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    int width;
-
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    width = csbi.dwSize.X; // Console width in characters
-
-    printBorder(width);
-
-    char message[100] = "Welcome To Hospital Management System";
-    int msgLen = strlen(message);
-    margin(3 , width);
-    printf("|");
-    printSpaces((width - msgLen - 2) / 2); 
-    
-    printf("%s", message);
-    
-    printSpaces((width - msgLen - 2) / 2); 
-    printf("|");
-    printf("\n");
-    margin(3 ,width);   
-    // printBorder(width);
-    margin(1,width);
-   strcpy(message,"Developed By Team Elite");
-    msgLen = strlen(message);
-    printf("|");
-    printSpaces((width - msgLen - 4)); 
-    printf("%s", message);
-     printSpaces(2); 
-  printf("|");
-//   margin(1,width);
-  printBorder(width);
-
-}
-
-void printBorder(int width) {
-    for (int i = 0; i < width; i++) {
-        printf("-");
-    }
-    printf("\n");
-}
-
-void printSpaces(int count) {
-    for (int i = 0; i < count; i++) {
-        printf(" ");
-    }
-}
-
-void margin(int x , int width)
+void menu()
 {
-    for (int i = 0; i < x; i++)
+    printf("--------------------------------------------------\n");
+    printf("1. Patient Mangement\n");
+    printf("2. Appointments\n");
+    printf("3. Update Patient\n");
+    printf("4. Billing\n");
+    printf("5. Exit\n");
+    printf("--------------------------------------------------\n");
+    printf("Please select an option: ");
+    int choice;
+    scanf("%d", &choice);
+    switch (choice)
     {
-        printf("|"); printSpaces((width -2 )); printf("|\n");
+        case 1:
+            printf("You selected Patient Management.\n");
+            break;
+        case 2:
+            printf("You selected Appointments.\n");
+            break;
+        case 3:
+            printf("You selected Update Patient.\n");
+            break;
+        case 4:
+            printf("You selected Billing.\n");
+            break;
+        case 5:
+            printf("Exiting the system. Goodbye!\n");
+            exit(0);
+        default:
+            printf("Invalid choice. Please try again.\n");
+            menu();
     }
-    
+}
+void welcomePage()
+{
+    printf("--------------------------------------------------\n");
+    printf("Welcome to the hospital Mangement system\n");
+    printf("--------------------------------------------------\n");
 }
