@@ -31,6 +31,7 @@ typedef struct patient2
     int age;
     char gen;
     char disease[100];
+    char admitDate[20];
 } patient;
 
 int main()
@@ -151,6 +152,10 @@ int addPatient()
     fgets(p.name, sizeof(p.name), stdin);
     p.name[strcspn(p.name, "\n")] = 0;
 
+    printf("Enter Admit Date (DD/MM/YYYY):\n");
+    fgets(p.admitDate, sizeof(p.admitDate), stdin);
+    p.admitDate[strcspn(p.admitDate, "\n")] = 0;
+
     printf("Enter Age :- \n");
     while (1)
     {
@@ -169,7 +174,7 @@ int addPatient()
         getchar();
         if (p.gen == 'M' || p.gen == 'F' || p.gen == 'm' || p.gen == 'f')
         {
-            p.gen = toupper(p.gen); // convert to uppercase for consistency
+            p.gen = toupper(p.gen);
             break;
         }
         printf("Invalid gender! Please enter 'M' or 'F': ");
@@ -180,6 +185,7 @@ int addPatient()
 
     fprintf(fptr, "ID : %d\n", p.id);
     fprintf(fptr, "Name : %s\n", p.name);
+    fprintf(fptr, "Admit Date : %s\n", p.admitDate);
     fprintf(fptr, "Age : %d\n", p.age);
     fprintf(fptr, "Gender : %c\n", p.gen);
     fprintf(fptr, "Disease : %s\n", p.disease);
@@ -340,9 +346,11 @@ int editPatient()
                 found = 1;
                 p.id = id;
 
-                // Read next 4 lines for details
+                // Read next 5 lines for details
                 line = strtok(NULL, "\n");
                 sscanf(line, "Name : %[^\n]", p.name);
+                line = strtok(NULL, "\n");
+                sscanf(line, "Admit Date : %[^\n]", p.admitDate);
                 line = strtok(NULL, "\n");
                 sscanf(line, "Age : %d", &p.age);
                 line = strtok(NULL, "\n");
@@ -353,6 +361,7 @@ int editPatient()
                 // Show previous details
                 printf("Previous Details:\n");
                 printf("Name: %s\n", p.name);
+                printf("Admit Date: %s\n", p.admitDate);
                 printf("Age: %d\n", p.age);
                 printf("Gender: %c\n", p.gen);
                 printf("Disease: %s\n", p.disease);
@@ -361,6 +370,10 @@ int editPatient()
                 printf("Enter new Name: ");
                 fgets(p.name, sizeof(p.name), stdin);
                 p.name[strcspn(p.name, "\n")] = 0;
+
+                printf("Enter new Admit Date (DD/MM/YYYY): ");
+                fgets(p.admitDate, sizeof(p.admitDate), stdin);
+                p.admitDate[strcspn(p.admitDate, "\n")] = 0;
 
                 printf("Enter new Age: ");
                 while (1)
@@ -390,7 +403,8 @@ int editPatient()
                 p.disease[strcspn(p.disease, "\n")] = 0;
 
                 // Write updated details to temp file
-                fprintf(temp, "ID : %d\nName : %s\nAge : %d\nGender : %c\nDisease : %s\n", p.id, p.name, p.age, p.gen, p.disease);
+                fprintf(temp, "ID : %d\nName : %s\nAdmit Date : %s\nAge : %d\nGender : %c\nDisease : %s\n",
+                        p.id, p.name, p.admitDate, p.age, p.gen, p.disease);
             }
             else
             {
@@ -419,6 +433,7 @@ int editPatient()
         printf("Patient with ID %d updated successfully!\n", searchId);
         printf("Updated Details:\n");
         printf("Name: %s\n", p.name);
+        printf("Admit Date: %s\n", p.admitDate);
         printf("Age: %d\n", p.age);
         printf("Gender: %c\n", p.gen);
         printf("Disease: %s\n", p.disease);
@@ -464,16 +479,17 @@ int deletePatient()
             {
                 found = 1;
                 p.id = id;
-                // Read and store next 4 lines for details
+                // Read and store next 5 lines for details
                 line = strtok(NULL, "\n");
                 sscanf(line, "Name : %[^\n]", p.name);
+                line = strtok(NULL, "\n");
+                sscanf(line, "Admit Date : %[^\n]", p.admitDate);
                 line = strtok(NULL, "\n");
                 sscanf(line, "Age : %d", &p.age);
                 line = strtok(NULL, "\n");
                 sscanf(line, "Gender : %c", &p.gen);
                 line = strtok(NULL, "\n");
                 sscanf(line, "Disease : %[^\n]", p.disease);
-                // Skip writing this patient to temp file
             }
             else
             {
@@ -497,13 +513,18 @@ int deletePatient()
 
     if (found)
     {
+        // Show previous details before deleting
         printf("---------------------------------------------------\n");
-        printf("Patient with ID %d deleted successfully!\n", searchId);
-        printf("Deleted Patient Details:\n");
+        printf("Previous Details (to be deleted):\n");
         printf("Name: %s\n", p.name);
+        printf("Admit Date: %s\n", p.admitDate);
         printf("Age: %d\n", p.age);
         printf("Gender: %c\n", p.gen);
         printf("Disease: %s\n", p.disease);
+        printf("---------------------------------------------------\n");
+        printf("Patient with ID %d deleted successfully!\n", searchId);
+        printf("---------------------------------------------------\n");
+        
     }
     else
     {
