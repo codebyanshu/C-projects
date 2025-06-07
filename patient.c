@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
 void header()
 {
     printf("***************************************\n");
@@ -13,6 +15,7 @@ void header()
     printf("This program is created by Team Elite \n");
     printf("***************************************\n");
 }
+
 void printmenu();
 int patientmenu();
 int addPatient();
@@ -20,6 +23,7 @@ int searchPatient();
 int viewAllPatient();
 int editPatient();
 int deletePatient();
+
 typedef struct patient2
 {
     int id;
@@ -28,6 +32,7 @@ typedef struct patient2
     char gen;
     char disease[100];
 } patient;
+
 int main()
 {
     // header();
@@ -36,6 +41,7 @@ int main()
     patientmenu();
     return 0;
 }
+
 void printmenu()
 {
 
@@ -51,6 +57,7 @@ void printmenu()
     printf("0.Back to main menu\n");
     printf("--------------------------- \n");
 }
+
 int patientmenu()
 {
     int choose;
@@ -95,6 +102,7 @@ int patientmenu()
         }
     } while (choose);
 }
+
 int addPatient()
 {
     patient p;
@@ -144,14 +152,28 @@ int addPatient()
     p.name[strcspn(p.name, "\n")] = 0;
 
     printf("Enter Age :- \n");
-    scanf("%d", &p.age);
-    getchar();
+    while (1)
+    {
+        scanf("%d", &p.age);
+        getchar();
+        if (p.age >= 0 && p.age <= 90)
+            break;
+        printf("Invalid age! Please enter age between 0 and 90: ");
+    }
 
     printf("Enter Gender :- \n");
     printf("'M' for male and 'F' for female\n");
-    scanf(" %c", &p.gen);
-    getchar();
-
+    while (1)
+    {
+        scanf(" %c", &p.gen);
+        getchar();
+        if (p.gen == 'M' || p.gen == 'F' || p.gen == 'm' || p.gen == 'f')
+        {
+            p.gen = toupper(p.gen); // convert to uppercase for consistency
+            break;
+        }
+        printf("Invalid gender! Please enter 'M' or 'F': ");
+    }
     printf("Enter Disease :- \n");
     fgets(p.disease, sizeof(p.disease), stdin);
     p.disease[strcspn(p.disease, "\n")] = 0;
@@ -166,6 +188,7 @@ int addPatient()
     printf("\nPress Enter to continue...");
     getchar();
 }
+
 int searchPatient()
 {
     FILE *fptr;
@@ -182,7 +205,8 @@ int searchPatient()
         printf("File is empty! No patient records found.\n");
         fclose(fptr);
         printf("\nPress Enter to continue...");
-        getchar(); getchar();
+        getchar();
+        getchar();
         return 0;
     }
     rewind(fptr);
@@ -228,6 +252,7 @@ int searchPatient()
     getchar();
     getchar(); // Wait for user to see output
 }
+
 int viewAllPatient()
 {
     FILE *fptr;
@@ -244,7 +269,8 @@ int viewAllPatient()
         printf("File is empty! No patient records found.\n");
         fclose(fptr);
         printf("\nPress Enter to continue...");
-        getchar(); getchar();
+        getchar();
+        getchar();
         return 0;
     }
     rewind(fptr);
@@ -264,6 +290,7 @@ int viewAllPatient()
     getchar();
     getchar();
 }
+
 int editPatient()
 {
     FILE *fptr, *temp;
@@ -285,7 +312,8 @@ int editPatient()
         fclose(fptr);
         fclose(temp);
         printf("\nPress Enter to continue...");
-        getchar(); getchar();
+        getchar();
+        getchar();
         return 0;
     }
     rewind(fptr);
@@ -335,12 +363,27 @@ int editPatient()
                 p.name[strcspn(p.name, "\n")] = 0;
 
                 printf("Enter new Age: ");
-                scanf("%d", &p.age);
-                getchar();
+                while (1)
+                {
+                    scanf("%d", &p.age);
+                    getchar();
+                    if (p.age >= 0 && p.age <= 90)
+                        break;
+                    printf("Invalid age! Please enter age between 0 and 90: ");
+                }
 
                 printf("Enter new Gender: ");
-                scanf(" %c", &p.gen);
-                getchar();
+                while (1)
+                {
+                    scanf(" %c", &p.gen);
+                    getchar();
+                    if (p.gen == 'M' || p.gen == 'F' || p.gen == 'm' || p.gen == 'f')
+                    {
+                        p.gen = toupper(p.gen);
+                        break;
+                    }
+                    printf("Invalid gender! Please enter 'M' or 'F': ");
+                }
 
                 printf("Enter new Disease: ");
                 fgets(p.disease, sizeof(p.disease), stdin);
@@ -467,5 +510,6 @@ int deletePatient()
         printf("Patient with ID %d not found.\n", searchId);
     }
     printf("\nPress Enter to continue...");
-    getchar(); getchar();
+    getchar();
+    getchar();
 }
