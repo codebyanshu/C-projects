@@ -26,14 +26,18 @@ void billMenu()
     int choice;
     do
     {
-        system("cls"); // <-- Add this line
-        printf("\n--- Bill Management ---\n");
+        system("cls");
+        head(); // <-- Add this line
+        printf("--------------------------------------------------\n");
+        printf("Welcome to Billing Section.\n");
+        printf("--------------------------------------------------\n");
         printf("1. Create New Bill\n");
         printf("2. Search Bill\n");
         printf("3. View All Bills\n");
         printf("4. Edit Bill\n");
         printf("5. Delete Bill\n");
         printf("6. Print Bill\n");
+        printf("7. Back to Main\n");
         printf("0. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
@@ -58,12 +62,15 @@ void billMenu()
         case 6:
             printBill();
             break;
-        case 0:
+        case 7:
             printf("Exiting Bill Management...\n");
             // Sleep(1000); // Optional: Pause for 1 second
             system("cls");
             menu(); // Return to main menu
             break;
+        case 0:
+            printf("Exiting the system. Goodbye!\n");
+            exit(0);
         default:
             printf("Invalid choice!\n");
         }
@@ -161,8 +168,8 @@ void editBill()
                     found = 1;
                     // Print old bill for reference
                     printf("\n--- Old Bill ---\n");
-                    printf("%s", line);      // header
-                    printf("%s", nextLine);  // patient id
+                    printf("%s", line);     // header
+                    printf("%s", nextLine); // patient id
                     // Print rest of bill to screen
                     for (int i = 0; i < 40 && fgets(line, sizeof(line), fptr); i++)
                     {
@@ -247,8 +254,8 @@ void deleteBill()
                     found = 1;
                     // Print deleted bill for reference
                     printf("\n--- Bill Deleted ---\n");
-                    printf("%s", line);      // header
-                    printf("%s", nextLine);  // patient id
+                    printf("%s", line);     // header
+                    printf("%s", nextLine); // patient id
                     // Print rest of bill to screen
                     for (int i = 0; i < 40 && fgets(line, sizeof(line), fptr); i++)
                     {
