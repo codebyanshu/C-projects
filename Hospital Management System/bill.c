@@ -6,6 +6,7 @@
 
 int menu();
 
+
 typedef struct
 {
     int billId;
