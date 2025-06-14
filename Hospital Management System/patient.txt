@@ -1,6 +1,0 @@
-ID : 1234
-Name : ak
-Admit Date : 18/12/2025
-Age : 12
-Gender : M
-Disease : jk
