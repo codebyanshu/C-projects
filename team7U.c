@@ -1,40 +1,60 @@
 #include<stdio.h>
-
+#include<stdlib.h>
 
 struct accountcreate {
     char name[50];
-    char Father_name[50];
+    char father_name[50];
     char mobile_no[15];
     char email[50];
-    char Date_Of_Birth [50];
+    char date_of_birth [50];
+    char id[10];
 };
 void account();
 void view();
 
- 
- void account ()
+ //function no 1, create account.
+ void account()
  { 
-      char Name[50], Father_Name[50], Date_Of_Birth[50], Mobile_Number[15], Email[50];
+     struct accountcreate user;   
     printf("Welcome To Account Managment Page \n");
     printf("Enter your Name:-");
-    scanf("%s",&Name);
+    scanf("%s",&user.name);
      printf("Enter your Father Name:-");
-    scanf("%s",&Father_Name);
+    scanf("%s",&user.father_name);
      printf("Enter your Mobile Number:-");
-    scanf("%s",&Mobile_Number);
+    scanf("%s",&user.mobile_no);
      printf("Enter your Email:-");
-    scanf("%s",&Email);
+    scanf("%s",&user.email);
      printf("Enter your Date Of Birth:-");
-    scanf("%s",&Date_Of_Birth);
+    scanf("%s",&user.date_of_birth);
+    printf("Enter your id:-");
+    scanf("%s",&user.id);
+    FILE*fptr=fopen("login1.txt","a");
+
+ if (fptr==NULL)
+ {
+   printf ("error in file opening \n");
+    return;
+ }
+ fprintf(fptr,"Full 1Name :- %s\n",user.name);
+ fprintf(fptr,"Father Name :- %s\n",user.father_name);
+fprintf(fptr,"Email :- %s\n",user.email);
+fprintf(fptr,"Mobile No :- %s\n",user.mobile_no);
+fprintf(fptr,"Date Of Birth :- %s\n",user.date_of_birth);
+fprintf(fptr,"Id :- %s\n",user.id);
+ fclose(fptr);
+ printf("Your Account Is Successfully Created");
+
 }
 void account_menu(){
    int Number;
     printf(" Welcome To Account Managment Page  \n\n");
     printf("Options:- \n");
     printf("1.Create Account \n");
-    printf("2.Modify \n");
-    printf("3.Delete\n");
-    printf("4.Exit\n");
+    printf("2.view \n");
+    printf("3.Modify \n");
+    printf("4.Delete\n");
+    printf("5.Exit\n");
     printf("Please Select Any Option:-");
     scanf("%d",&Number);
     switch (Number)
@@ -66,31 +86,21 @@ int main() {
 void view()
 {
  struct accountcreate user ;
- FILE*fptr=fopen("login1.txt","a");
+ FILE*fptr=fopen("login1.txt","r");
 
  if (fptr==NULL)
  {
-    ("error in file opening \n");
+   printf ("error in file opening \n");
+    return;
  }
     
-   printf("\t\t\t~~Welcome To Account Detail Page~~\t\t\t");
-   printf("Full Name");
-   scanf("%[^\n]",user.name);
- /*printf("Father Name :- \t ");
- scanf("%s", user.Father_name);
- printf("Mobile number :- \t ");
- scanf("%s", user.mobile_no);
- printf("Email :- \t ");
- scanf("%s", user.email);
- printf("Date Of Birth :- \t ");
- scanf("%s", user.Date_Of_Birth);*/
-
-   fprintf(fptr,"Name :- %s\n",user.name);
-   fprintf(fptr," Father Name :- %s\n",user.Father_name);
-   fprintf(fptr,"Mobile No :- %s\n",user.mobile_no);
-   fprintf(fptr,"Email :- %s\n",user.email);
-   fprintf(fptr,"Date Of Birth :- %s\n",user.Date_Of_Birth);
+   char line[300];
+   while (fgets(line,sizeof(line),fptr))
+   {
+printf("%s",line);   
+   }
 }
+
 
 
 
