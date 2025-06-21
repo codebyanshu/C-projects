@@ -52,7 +52,7 @@ int main() {
     default:
 	printf("Invalid choice! Try again.\n");
 	system("pause");
-		}
+}
     }
 
     return 0;
@@ -60,10 +60,10 @@ int main() {
 
 int loanIdExists(int id) {
     struct Loan loan;
-    FILE *fp = fopen("loans.dat", "rb");
+    FILE *fp = fopen("loans.text", "r");
 
     if (fp == NULL)
-	return 0; 
+	return 0; // No file = no loans yet
 
     while (fread(&loan, sizeof(loan), 1, fp)) {
 	if (loan.id == id) {
@@ -76,13 +76,13 @@ int loanIdExists(int id) {
     return 0; // ID is unique
 }
 
-// ..............Apply loan...............
+
 void applyLoan() {
     struct Loan loan;
     FILE *fp;
     float rate = 0.1f;
     system("cls");
-    
+
     printf("============================\n");
     printf("   APPLY FOR LOAN\n");
     printf("============================\n");
@@ -103,7 +103,7 @@ void applyLoan() {
     fgets(loan.name, sizeof(loan.name), stdin);
     loan.name[strcspn(loan.name, "\n")] = 0;
 
-    printf("Enter Loan Type(eg. home): ");
+    printf("Enter Loan Type: ");
     fgets(loan.loanType, sizeof(loan.loanType), stdin);
     loan.loanType[strcspn(loan.loanType, "\n")] = 0;
 
@@ -115,7 +115,7 @@ void applyLoan() {
 
     loan.interest = loan.amount * rate * loan.duration;
 
-    fp = fopen("loans.dat", "ab");
+    fp = fopen("loans.text", "a");
     if (fp == NULL) {
 	printf("Error opening file.\n");
 	system("pause");
@@ -133,7 +133,7 @@ void applyLoan() {
 void remainingLoanDetails() {
     struct Loan loan;
     struct Payment payment;
-    FILE *loanFile = fopen("loans.dat", "rb");
+    FILE *loanFile = fopen("loans.text", "r");
     FILE *payFile;
     float totalPaid;
     float totalLoan;
@@ -157,7 +157,7 @@ void remainingLoanDetails() {
 	totalPaid = 0;
 
 	// Calculate total paid
-	payFile = fopen("payments.dat", "rb");
+	payFile = fopen("payments.text", "r");
 	if (payFile != NULL) {
 	    while (fread(&payment, sizeof(payment), 1, payFile)) {
 		if (payment.loanId == loan.id) {
@@ -257,7 +257,7 @@ void loanPayments() {
 void makePayment(int loanId) {
     struct Loan loan;
     struct Payment payment;
-    FILE *loanFile = fopen("loans.dat", "rb");
+    FILE *loanFile = fopen("loans.text", "r");
     FILE *payFile;
     float totalPaid = 0;
     float totalLoan = 0;
@@ -288,7 +288,7 @@ void makePayment(int loanId) {
     }
 
     // Calculate total paid
-    payFile = fopen("payments.dat", "rb");
+    payFile = fopen("payments.text", "r");
     if (payFile != NULL) {
 	while (fread(&payment, sizeof(payment), 1, payFile)) {
 	    if (payment.loanId == loanId) {
@@ -322,7 +322,7 @@ void makePayment(int loanId) {
     payment.loanId = loanId;
     payment.paidAmount = newPayment;
 
-    payFile = fopen("payments.dat", "ab");
+    payFile = fopen("payments.text", "a");
     if (payFile == NULL) {
 	printf("Error opening payment file.\n");
 	system("pause");
@@ -339,7 +339,7 @@ void makePayment(int loanId) {
 
 void viewPaymentHistory(int loanId) {
     struct Payment payment;
-    FILE *fp = fopen("payments.dat", "rb");
+    FILE *fp = fopen("payments.text", "r");
     int found = 0;
 
     printf("Payment History for Loan ID %d:\n", loanId);
@@ -366,8 +366,8 @@ void viewPaymentHistory(int loanId) {
 void checkRemainingBalance(int loanId) {
     struct Loan loan;
     struct Payment payment;
-    FILE *loanFile = fopen("loans.dat", "rb");
-    FILE *payFile = fopen("payments.dat", "rb");
+    FILE *loanFile = fopen("loans.text", "r");
+    FILE *payFile = fopen("payments.text", "r");
     float totalPaid = 0;
     float totalLoan = 0;
     float remaining = 0;
@@ -416,35 +416,35 @@ void loanDetails() {
     int subChoice;
 
     do {
-        system("cls");
-        printf("============================\n");
-        printf("        LOAN DETAILS\n");
-        printf("============================\n");
-        printf("1. All Loans\n");
-        printf("2. Remaining (Unpaid) Loans\n");
-        printf("3. Back to Main Menu\n");
-        printf("============================\n");
-        printf("Enter your choice: ");
-        scanf("%d", &subChoice);
+	system("cls");
+	printf("============================\n");
+	printf("        LOAN DETAILS\n");
+	printf("============================\n");
+	printf("1. All Loans\n");
+	printf("2. Remaining (Unpaid) Loans\n");
+	printf("3. Back to Main Menu\n");
+	printf("============================\n");
+	printf("Enter your choice: ");
+	scanf("%d", &subChoice);
 
-        switch (subChoice) {
-            case 1:
-                allLoanDetails();
-                break;
-            case 2:
-                remainingLoanDetails();
-                break;
-            case 3:
-                return;
-            default:
-                printf("Invalid choice!\n");
-                system("pause");
-        }
+	switch (subChoice) {
+	    case 1:
+		allLoanDetails();
+		break;
+	    case 2:
+		remainingLoanDetails();
+		break;
+	    case 3:
+		return;
+	    default:
+		printf("Invalid choice!\n");
+		system("pause");
+	}
     } while (subChoice != 3);
 }
 void allLoanDetails() {
     struct Loan loan;
-    FILE *fp = fopen("loans.dat", "rb");
+    FILE *fp = fopen("loans.text", "r");
     int count = 0;
 
     system("cls");
@@ -453,36 +453,36 @@ void allLoanDetails() {
     printf("============================\n");
 
     if (fp == NULL) {
-        printf("No loan records found.\n");
-        system("pause");
-        return;
+	printf("No loan records found.\n");
+	system("pause");
+	return;
     }
 
     while (fread(&loan, sizeof(loan), 1, fp)) {
-        printf("Loan ID      : %d\n", loan.id);
-        printf("Name         : %s\n", loan.name);
-        printf("Loan Type    : %s\n", loan.loanType);
-        printf("Amount       : Rs. %.2f\n", loan.amount);
-        printf("Interest     : Rs. %.2f\n", loan.interest);
-        printf("Duration     : %d years\n", loan.duration);
-        printf("-----------------------------\n");
-        count++;
+	printf("Loan ID      : %d\n", loan.id);
+	printf("Name         : %s\n", loan.name);
+	printf("Loan Type    : %s\n", loan.loanType);
+	printf("Amount       : Rs. %.2f\n", loan.amount);
+	printf("Interest     : Rs. %.2f\n", loan.interest);
+	printf("Duration     : %d years\n", loan.duration);
+	printf("-----------------------------\n");
+	count++;
 
-        if (count % 5 == 0) {
-            printf("Press Enter to see more...");
-            getchar();
-            getchar(); // flush
-            system("cls");
-            printf("============================\n");
-            printf("        ALL LOANS\n");
-            printf("============================\n");
-        }
+	if (count % 5 == 0) {
+	    printf("Press Enter to see more...");
+	    getchar();
+	    getchar(); // flush
+	    system("cls");
+	    printf("============================\n");
+	    printf("        ALL LOANS\n");
+	    printf("============================\n");
+	}
     }
 
     fclose(fp);
 
     if (count == 0) {
-        printf("No loan records to display.\n");
+	printf("No loan records to display.\n");
     }
 
     system("pause");
