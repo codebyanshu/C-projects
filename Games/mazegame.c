@@ -59,7 +59,7 @@ void showInstructions()
     system("cls");
 }
 
-int main()
+int welcomemaze()
 {
     showWelcomePage();
 
