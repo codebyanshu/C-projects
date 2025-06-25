@@ -1,50 +1,52 @@
 ```markdown
-# 🎮 C Language Game Projects by Team Elite
+# 🎮 Terminal-Based C Games by Team Elite
 
-Welcome to the **C Games Repository** by **Team Elite**.  
-This collection includes fun and interactive terminal-based games made using pure C programming. Each project helped us practice **logic building**, **structures**, **loops**, **arrays**, and other core C concepts.
-
----
-
-## 🕹️ Games Included
-
-### 🔢 Number Guessing Game
-- The computer picks a random number
-- You try to guess it with hints like too high or too low
-
-### 🃏 Card Matching Game
-- Flip two cards at a time
-- Match all pairs to win
-- A test of memory and attention
-
-### 💣 Minesweeper (Terminal Version)
-- Open cells without hitting a hidden mine
-- Inspired by the classic PC game
-
-### 🔀 Maze Game
-- Navigate through a maze using keyboard input
-- Reach the goal avoiding dead ends
-- Challenge your logic and path-finding skills
-
-### 🐍 Snake Game *(Coming Soon)*
-- Classic snake that grows on eating food
-- Simple terminal graphics and real-time movement
+Welcome to the **Games** folder of my C programming projects.  
+Here you’ll find a set of classic games written in C language using basic concepts like arrays, loops, conditions, and structures. These games run directly in the terminal and are designed to be simple, fun, and a great way to strengthen logic building.
 
 ---
 
-## 📚 What We Learned
+## 📂 Games Included
 
-- Designing game logic using structures and functions  
-- Creating interactive terminal UIs  
-- Handling user input and game loops  
-- Simulating randomness and state updates  
-- Using modular coding and reusable logic
+### 🧠 Card Matching Game (`CardMatching.c`)
+- Flip and match pairs from a hidden grid
+- Tests your memory and pattern recognition
+
+### ✊🖐✌️ Rock Paper Scissors (`RockPaperSession.c`)
+- A simple player vs computer game
+- Random moves and scoring logic
+
+### 🐍 Snake Game (`Snackgame.c`)
+- Terminal version of the classic snake game
+- Eat food to grow longer without hitting walls
+
+### ❌⭕ Tic Tac Toe (`TicTakToe.c`)
+- Two-player game played on a 3x3 board
+- Implements win check logic for rows, columns, and diagonals
+
+### 🌀 Maze Game (`mazegame.c`)
+- Solve a maze by navigating using key input
+- Dynamic layout and challenge logic
+
+### 🧩 Main Menu (`main.c`)
+- Acts as the launcher or central menu to select which game to play (if implemented)
+- Handles user interaction and navigation between games
 
 ---
 
-## 🚀 How to Run
+## 🧠 What I Learned
 
-1. Clone this repository:
+- Structuring code using functions and modular design
+- Applying loops and conditions for game flow
+- Using random number generation for unpredictable game behavior
+- Creating interactive experiences in a text-based terminal
+- Handling user input effectively
+
+---
+
+## 🛠 How to Run
+
+1. Clone the repository:
 ```
 
 git clone [https://github.com/hackeranshu007/projects.git](https://github.com/hackeranshu007/projects.git)
@@ -52,54 +54,51 @@ cd projects/Games
 
 ```
 
-2. Enter the game directory:
+2. Compile any game using GCC:
 ```
 
-cd game\_folder\_name
-
-```
-
-3. Compile and run the game using GCC:
-```
-
-gcc game\_name.c -o game
-./game
+gcc CardMatching.c -o cardmatch
+./cardmatch
 
 ```
 
----
+3. Or compile the main menu if available:
+```
 
-## 🌱 In Progress
+gcc main.c -o games
+./games
 
-- Adding arrow key navigation for games like maze and snake  
-- Improving UI using box drawing characters  
-- Adding scoreboard or levels
+```
 
----
-
-## 👨‍💻 About Team Elite
-
-We are a group of passionate learners focused on mastering C through hands-on projects.  
-All games here are part of our learning journey and will continue to grow with new ideas and features.
+> You may need to compile with additional `.c` files if `main.c` connects to others. Update include paths accordingly.
 
 ---
 
-## 🤝 Contributions
+## 🚧 Work in Progress
 
-Suggestions, bug reports, or improvements are always welcome.  
-Feel free to fork and build on top of our logic.
+- Integrating all games under one main menu
+- Adding score tracking and difficulty levels
+- Improving terminal UI with box drawing and color codes
+- Adding input handling using arrow keys
 
 ---
 
-## 📬 Contact
+## 👨‍💻 Created By
 
+**Team Elite** – A group of passionate learners building logic-based games in C  
 GitHub: [@hackeranshu007](https://github.com/hackeranshu007)
 
 ---
 
-Thank you for visiting our game collection!
+Enjoy the games and feel free to fork or contribute!
 ```
 
 ---
 
-Let me know if you'd like to customize this further for each game's folder or include screenshots or instructions for Windows/Linux.
+Let me know if you want to:
+
+* Add screenshots or sample outputs
+* Add `.gif` demos or gameplay instructions
+* Turn `main.c` into a full menu launcher (if it’s not already)
+
+I can also create one unified launcher for all games if you plan to go that route.
