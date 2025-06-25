@@ -27,8 +27,9 @@ void makePayment(int loanId);
 void viewPaymentHistory(int loanId);
 void checkRemainingBalance(int loanId);
 int loanIdExists(int id);
+int main2();
 
-int main() {
+int main2() {
     int choice;
 
     while (1) {
