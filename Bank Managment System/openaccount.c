@@ -113,12 +113,12 @@ void account_menu()
         break;
     }
 }
-int main()
-{
-    account_menu();
-    return 0;
-}
-// Function no. 2 , view details.
+// int main()
+// {
+    // account_menu();
+//     return 0;
+// }
+// // Function no. 2 , view details.
 void view()
 {
     struct accountcreate user;
