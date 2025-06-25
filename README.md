@@ -1,7 +1,3 @@
-Sure! Here's the updated and interactive `README.md` for your **C projects** repo with your team name **Team Elite** added:
-
----
-
 ```markdown
 # 🔧 C Programming Projects by Team Elite
 
