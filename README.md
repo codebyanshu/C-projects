@@ -1,10 +1,7 @@
-```markdown
 # 🔧 C Programming Projects by Team Elite
 
 Welcome to our collection of **C language projects**, built and maintained by **Team Elite**!  
 This repository features a variety of **terminal-based C programs** created to learn, practice, and master core C programming concepts such as **loops, conditions, arrays, pointers, structures, and file handling**.
-
----
 
 ## 📂 Project Categories
 
@@ -21,8 +18,6 @@ This repository features a variety of **terminal-based C programs** created to l
 - **Student Record System** – Store and retrieve student details using files.
 - **Encryption-Decryption Tool** – Basic text security with file handling.
 
----
-
 ## 💡 What We Learned
 
 - Control flow with loops and conditions  
@@ -30,8 +25,6 @@ This repository features a variety of **terminal-based C programs** created to l
 - Handling user input/output efficiently  
 - Using file handling for saving and reading data  
 - Designing real-world simulations with terminal UI
-
----
 
 ## 🚧 Work in Progress
 
@@ -62,9 +55,6 @@ gcc filename.c -o output
 ./output
 
 ```
-
----
-
 ## 👨‍💻 About Team Elite
 
 **Team Elite** is a group of learners passionate about building strong programming fundamentals through practical projects.  
@@ -84,8 +74,3 @@ We are currently focused on **C language**, and we aim to expand into **C++ and 
 ---
 
 **Thank you for visiting our repo!**
-```
-
----
-
-Let me know if you'd like to personalize it more (e.g., add team members’ names, individual GitHub links, or future goals).
