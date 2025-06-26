@@ -1,4 +1,3 @@
-```markdown
 # 🎮 Terminal-Based C Games by Team Elite
 
 Welcome to the **Games** folder of my C programming projects.  
@@ -91,14 +90,3 @@ GitHub: [@hackeranshu007](https://github.com/hackeranshu007)
 ---
 
 Enjoy the games and feel free to fork or contribute!
-```
-
----
-
-Let me know if you want to:
-
-* Add screenshots or sample outputs
-* Add `.gif` demos or gameplay instructions
-* Turn `main.c` into a full menu launcher (if it’s not already)
-
-I can also create one unified launcher for all games if you plan to go that route.
