@@ -61,7 +61,7 @@ int main2() {
 
 int loanIdExists(int id) {
     struct Loan loan;
-    FILE *fp = fopen("loans.text", "r");
+    FILE *fp = fopen("loans.txt", "r");
 
     if (fp == NULL)
 	return 0; // No file = no loans yet
@@ -116,7 +116,7 @@ void applyLoan() {
 
     loan.interest = loan.amount * rate * loan.duration;
 
-    fp = fopen("loans.text", "a");
+    fp = fopen("loans.txt", "a");
     if (fp == NULL) {
 	printf("Error opening file.\n");
 	system("pause");
@@ -134,7 +134,7 @@ void applyLoan() {
 void remainingLoanDetails() {
     struct Loan loan;
     struct Payment payment;
-    FILE *loanFile = fopen("loans.text", "r");
+    FILE *loanFile = fopen("loans.txt", "r");
     FILE *payFile;
     float totalPaid;
     float totalLoan;
@@ -158,7 +158,7 @@ void remainingLoanDetails() {
 	totalPaid = 0;
 
 	// Calculate total paid
-	payFile = fopen("payments.text", "r");
+	payFile = fopen("payments.txt", "r");
 	if (payFile != NULL) {
 	    while (fread(&payment, sizeof(payment), 1, payFile)) {
 		if (payment.loanId == loan.id) {
@@ -258,7 +258,7 @@ void loanPayments() {
 void makePayment(int loanId) {
     struct Loan loan;
     struct Payment payment;
-    FILE *loanFile = fopen("loans.text", "r");
+    FILE *loanFile = fopen("loans.txt", "r");
     FILE *payFile;
     float totalPaid = 0;
     float totalLoan = 0;
@@ -289,7 +289,7 @@ void makePayment(int loanId) {
     }
 
     // Calculate total paid
-    payFile = fopen("payments.text", "r");
+    payFile = fopen("payments.txt", "r");
     if (payFile != NULL) {
 	while (fread(&payment, sizeof(payment), 1, payFile)) {
 	    if (payment.loanId == loanId) {
@@ -323,7 +323,7 @@ void makePayment(int loanId) {
     payment.loanId = loanId;
     payment.paidAmount = newPayment;
 
-    payFile = fopen("payments.text", "a");
+    payFile = fopen("payments.txt", "a");
     if (payFile == NULL) {
 	printf("Error opening payment file.\n");
 	system("pause");
@@ -340,7 +340,7 @@ void makePayment(int loanId) {
 
 void viewPaymentHistory(int loanId) {
     struct Payment payment;
-    FILE *fp = fopen("payments.text", "r");
+    FILE *fp = fopen("payments.txt", "r");
     int found = 0;
 
     printf("Payment History for Loan ID %d:\n", loanId);
@@ -367,8 +367,8 @@ void viewPaymentHistory(int loanId) {
 void checkRemainingBalance(int loanId) {
     struct Loan loan;
     struct Payment payment;
-    FILE *loanFile = fopen("loans.text", "r");
-    FILE *payFile = fopen("payments.text", "r");
+    FILE *loanFile = fopen("loans.txt", "r");
+    FILE *payFile = fopen("payments.txt", "r");
     float totalPaid = 0;
     float totalLoan = 0;
     float remaining = 0;
@@ -445,7 +445,7 @@ void loanDetails() {
 }
 void allLoanDetails() {
     struct Loan loan;
-    FILE *fp = fopen("loans.text", "r");
+    FILE *fp = fopen("loans.txt", "r");
     int count = 0;
 
     system("cls");

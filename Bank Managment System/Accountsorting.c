@@ -3,45 +3,45 @@
 void insertionSort(int arr[], int n);
 void printArray(int arr[], int n);
 
-int main()
-{
-    FILE *fptr;
-    fptr = fopen("sort.txt", "r+");
-    if (fptr == NULL)
-    {
+// int main()
+// {
+//     FILE *fptr;
+//     fptr = fopen("sort.txt", "r+");
+//     if (fptr == NULL)
+//     {
 
-        fptr = fopen("sort.txt", "w+");
+//         fptr = fopen("sort.txt", "w+");
 
-        printf("Error: Could not open file.\n");
-        return 1;
-    }
-    int acc = 0;
-    printf("Enter your acc number \n");
-    scanf("%d", &acc);
-    fprintf(fptr, "acc no : %d\n", acc);
-    fflush(fptr);
-    rewind(fptr);
+//         printf("Error: Could not open file.\n");
+//         return 1;
+//     }
+//     int acc = 0;
+//     printf("Enter your acc number \n");
+//     scanf("%d", &acc);
+//     fprintf(fptr, "acc no : %d\n", acc);
+//     fflush(fptr);
+//     rewind(fptr);
 
-    int stor[100];
-    int count = 0;
+//     int stor[100];
+//     int count = 0;
 
-    while (fscanf(fptr, "acc no : %d\n", &stor[count]) == 1)
-    {
-        count++;
-    }
-    fclose(fptr);
+//     while (fscanf(fptr, "acc no : %d\n", &stor[count]) == 1)
+//     {
+//         count++;
+//     }
+//     fclose(fptr);
 
-    printf("Original array: ");
-    printArray(stor, count);
+//     printf("Original array: ");
+//     printArray(stor, count);
 
-    insertionSort(stor, count);
+//     insertionSort(stor, count);
 
-    printf("after sorting array: ");
+//     printf("after sorting array: ");
 
-    printArray(stor, count);
+//     printArray(stor, count);
 
-    return 0;
-}
+//     return 0;
+// }
 
 void insertionSort(int arr[], int n)
 {
