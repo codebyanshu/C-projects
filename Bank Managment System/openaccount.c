@@ -4,7 +4,13 @@
 #include <time.h>
 #include <ctype.h>
 #include "encryption.h"
-
+long long unsigned int generateRandomNumber(int no);
+int is_valid_word(const char *str);
+void account();
+void account_menu();
+void print_sorted_accounts();
+void modify();
+void delete_account();
 #define MAX_RECORDS 100
 
 struct accountcreate
