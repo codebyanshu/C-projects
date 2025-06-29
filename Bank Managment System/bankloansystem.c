@@ -92,7 +92,7 @@ void applyLoan() {
     printf("Enter Loan ID: ");
     scanf("%d", &loan.id);
 
-    if (loanIdExists(loan.id)) {
+    if (loanIdExists(loan.id) == 1) {
 	printf("This Loan ID already exists. Please enter a different ID.\n");
       }
     }
