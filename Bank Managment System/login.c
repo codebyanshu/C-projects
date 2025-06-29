@@ -58,11 +58,65 @@ void signup_page()
 {
     char username[50], password[50];
     printf("\n====== Signup Page ======\n");
-    printf("Choose a Username: ");
-    fflush(stdin);
-    scanf("%s", username);
-    printf("Choose a Password: ");     fflush(stdin);
-    scanf("%s", password);
+    int valid, i;
+
+    do
+    {
+        printf("Choose a Username : ");
+        scanf("%99s", username);
+
+        valid = 1;
+
+        for (i = 0; username[i] != '\0'; i++)
+        {
+            if (!isalpha((unsigned char)username[i]))
+            {
+                valid = 0;
+                break;
+            }
+        }
+
+        if (!valid)
+        {
+            printf("Invalid input. Please use letters only.\n");
+        }
+
+    } while (!valid);
+
+    // printf("Username accepted: %s\n", username);
+    int hasLower, hasUpper, hasDigit, hasSpecial;
+
+    do
+    {
+        printf("Choose a Password : ");
+        scanf("%99s", password);
+
+        hasLower = hasUpper = hasDigit = hasSpecial = 0;
+        valid = 1;
+
+        for (i = 0; password[i] != '\0'; i++)
+        {
+            if (islower((unsigned char)password[i]))
+                hasLower = 1;
+            else if (isupper((unsigned char)password[i]))
+                hasUpper = 1;
+            else if (isdigit((unsigned char)password[i]))
+                hasDigit = 1;
+            else
+                hasSpecial = 1;
+        }
+
+        if (!(hasLower && hasUpper && hasDigit && hasSpecial))
+        {
+            printf("Invalid input. Make sure your password includes all character types.\n");
+            valid = 0;
+        }
+        if (strlen(password) < 0)
+        {
+            printf("Invalid input. The Length should be larger than 5.\n");
+            valid = 0;
+        }
+    } while (!valid);
 
     FILE *f = fopen("users.txt", "a");
     if (!f)
