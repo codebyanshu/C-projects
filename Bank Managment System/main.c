@@ -9,6 +9,7 @@
 
 int main()
 {
+    fflush(stdin);
     login_page();
 
     int choice;
