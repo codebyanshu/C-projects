@@ -63,9 +63,9 @@ int loanIdExists(int id) {
     struct Loan loan;
     FILE *fp = fopen("loans.txt", "r");
 
-    if (fp == NULL)
+    if (fp == NULL){
 	return 0; // No file = no loans yet
-
+	}
     while (fread(&loan, sizeof(loan), 1, fp)) {
 	if (loan.id == id) {
 	    fclose(fp);
@@ -90,6 +90,7 @@ void applyLoan() {
 
     do {
     printf("Enter Loan ID: ");
+	fflush(stdin);
     scanf("%d", &loan.id);
 
     if (loanIdExists(loan.id) == 1) {
