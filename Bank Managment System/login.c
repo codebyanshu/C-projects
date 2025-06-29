@@ -15,14 +15,17 @@ void login_page()
         printf("2. Signup\n");
         printf("3. Exit\n");
         printf("Select option: ");
+        fflush(stdin);
         scanf("%d", &ch);
 
         if (ch == 1)
         {
             char username[50], password[50];
             printf("Enter Username: ");
+            fflush(stdin);
             scanf("%s", username);
             printf("Enter Password: ");
+            fflush(stdin);
             scanf("%s", password);
 
             if (check_credentials(username, password))
@@ -56,8 +59,9 @@ void signup_page()
     char username[50], password[50];
     printf("\n====== Signup Page ======\n");
     printf("Choose a Username: ");
+    fflush(stdin);
     scanf("%s", username);
-    printf("Choose a Password: ");
+    printf("Choose a Password: ");     fflush(stdin);
     scanf("%s", password);
 
     FILE *f = fopen("users.txt", "a");
