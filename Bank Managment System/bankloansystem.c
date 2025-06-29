@@ -219,6 +219,7 @@ void loanPayments() {
 	printf("         PAYMENT MENU\n");
 	printf("============================\n");
 	printf("Enter Loan ID: ");
+	fflush(stdin);
 	scanf("%d", &id);
 
 	if (!loanIdExists(id)) {
