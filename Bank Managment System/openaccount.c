@@ -4,6 +4,9 @@
 #include <time.h>
 #include <ctype.h>
 #include "encryption.h"
+
+
+
 long long unsigned int generateRandomNumber(int no);
 int is_valid_word(const char *str);
 void account();
