@@ -9,7 +9,7 @@ int main()
 {
     welcomePage();
     system("cls");
-
+    menu();
     return 0;
 }
 
