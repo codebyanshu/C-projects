@@ -28,8 +28,8 @@ This repository features a variety of **terminal-based C programs** created to l
 
 ## 🚧 Work in Progress
 
-- Adding arrow-key navigation to UI-based games  
-- Improving UI with box layout and cursor control  
+- creating UI-based games  
+- Improving UI with design  
 - Modularizing code for better readability and reuse
 
 ---
