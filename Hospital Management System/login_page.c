@@ -181,8 +181,11 @@ void login()
     }
     if (found)
     {
+        system("cls");
         printf("Login successful!\n\n");
         printf("Welcome, %s!\n", file_name);
+        Sleep(1500);
+        menu();
     }
     else
     {
