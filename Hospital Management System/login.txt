@@ -1,7 +1,0 @@
---------------------------
-Name      : asdf
-Mobile    : 2345678901
-Email     : @gmail.com
-Username  : qwer
-Password  : Asdf@123
---------------------------

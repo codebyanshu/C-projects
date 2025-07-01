@@ -27,6 +27,10 @@ Here you’ll find a set of classic games written in C language using basic conc
 - Solve a maze by navigating using key input
 - Dynamic layout and challenge logic
 
+### ⛏️ Mining Game (`MiningGame.c`)
+- Mine for resources and avoid obstacles
+- Features random resource placement and score tracking
+
 ### 🧩 Main Menu (`main.c`)
 - Acts as the launcher or central menu to select which game to play (if implemented)
 - Handles user interaction and navigation between games

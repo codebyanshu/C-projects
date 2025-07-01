@@ -6,6 +6,7 @@
 #include"Snackgame.c"
 #include"TicTakToe.c"
 #include"RockPaperSessior.c"
+#include"MiningGame.c"
 
 void welcomeScreen()
 {
@@ -38,7 +39,8 @@ void gameMenu()
     printf("  [3] Tic Tac Toe\n");
     printf("  [4] Card Matching\n");
     printf("  [5] Rock Paper Sessior\n");
-    printf("  [0] Exit\n");
+    printf("  [6] Mininig Game\n");
+    printf("  [0] Exit\n");     
     printf("-------------------------------------------------\n");
 
     printf("Enter your choice: ");
@@ -65,6 +67,10 @@ void gameMenu()
     case 5:
         printf("Opening Rock Paper Secciors Challenge...\n");
         welcomerockpapersessior();
+        break;
+    case 6:
+        printf("Opening Mining Game Challenge...\n");
+        MiningGame();
         break;
     case 0:
         printf("Thanks for playing! See you again.\n");
