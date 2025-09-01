@@ -66,16 +66,48 @@ void print_stack()
     }
 }
 
+void write_program_to_file(char *file_path){
+    FILE *file = fopen(file_path,"wb");
+    if (file == NULL)
+    {
+       fprintf(stderr,"Error: Could not write to file %s\n",file_path);
+       exit(1);
+    }
+
+    fwrite(program,sizeof(program[0]),PROGRAM_SIZE,file);
+
+    fclose(file);
+}
+Inst *read_program_from_file(char *file_path){
+    FILE *file = fopen(file_path,"rb");
+    if (file == NULL)
+    {
+       fprintf(stderr,"Error: Could not read to file %s\n",file_path);
+       exit(1);
+    }
+
+    Inst *instruction = malloc(sizeof(Inst) * MAX_STACK_SIZE);
+    fseek(file,0,SEEK_END);
+    int length = ftell(file);
+    fseek(file,0,SEEK_SET);
+    fread(instruction,sizeof(instruction[0]),length,file);
+
+    fclose(file);
+    return instruction;
+}
+
 int main(int argc, char const *argv[])
 {
 
     int a, b;
+    write_program_to_file("test.tim");
+    Inst *loaded_program = read_program_from_file("test.tim");
     for (size_t ip = 0; ip < PROGRAM_SIZE; ip++)
     {
-        switch (program[ip].type)
+        switch (loaded_program[ip].type)
         {
         case INST_PUSH:
-            push(program[ip].value);
+            push(loaded_program[ip].value);
             break;
         case INST_POP:
             pop();
