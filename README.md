@@ -148,9 +148,8 @@ gcc main.c -o vm
 
 ## 🚧 Work in Progress
 
-- Integrating all games under one main menu
-- Adding score tracking and difficulty levels
-- Improving terminal UI with box drawing and color codes
+- Adding arrow-key navigation to UI-based games  
+- Improving UI with box layout and cursor control  
 - Modularizing code for better readability and reuse
 
 ---
