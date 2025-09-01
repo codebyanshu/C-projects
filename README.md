@@ -167,7 +167,7 @@ We are currently focused on **C language**, and we aim to expand into **C++ and 
 
 ## 🙋‍♂️ Contact
 
-- GitHub: [@hackeranshu007](https://github.com/hackeranshu007)
+- GitHub: [@hackeranshu007](https://github.com/codebyanshu)
 - More updates coming soon from Team Elite!
 
 ---
